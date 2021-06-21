@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="983010c0e7d34d0f895393349301d2b6" Name="Diagram1">
+        <EntityTypeShape EntityType="TiendaModel.categoria" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.cliente" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.dirEntrega" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.Empleado" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.orden" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.orden_producto" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.Paqueteria" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaModel.producto" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="TiendaModel.FK__producto__id_cat__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaModel.FK__dirEntreg__id_cl__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaModel.FK__orden__id_client__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaModel.FK__orden__id_paquet__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaModel.FK__orden_pro__Id_or__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaModel.FK__orden_pro__id_pr__73BA3083" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

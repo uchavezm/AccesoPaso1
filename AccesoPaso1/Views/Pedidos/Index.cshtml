@@ -1,0 +1,47 @@
+﻿@using AccesoPaso1.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historial</h2>
+<table class="table table-bordered table-responsive table-striped">
+
+    @{ 
+        if (Session["misPedidos"] != null) {
+            foreach (PedidoCliente pedido in (List<PedidoCliente>)Session["misPedidos"]) {
+
+                int idOrd = pedido.Orden.Id_orden;
+            <tr>
+                <td>Fecha: @pedido.Fecha</td>
+                <td>Envío: @pedido.envio</td>
+                <td>Entrega: @pedido.status</td>
+                <td></td>
+
+            </tr>
+
+                foreach (ItemPedido item in (List<ItemPedido>)Session["Pedido"]) {
+
+                    if (item.idOrd == idOrd) {
+                        <tr>
+                            <td>@item.Product.nombre</td>
+                            <td><img class="img-responsive" src="~/Content/img/productos/@item.Product.imagen" /></td>
+                            <td>@item.Product.precio</td>
+                            <td>@item.Cantidad</td>
+                            <td>@(item.Product.precio * item.Cantidad)</td>
+                        </tr>
+                    }
+
+                }
+                <tr>
+                    <td aling="right" colspan="4">Total</td>
+                    <td>
+                        @pedido.Total
+                    </td>
+                </tr>
+            }
+        }
+
+    }
+
+</table>

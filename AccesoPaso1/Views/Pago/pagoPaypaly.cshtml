@@ -1,0 +1,42 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "pagoAceptado";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gracias por su compra, su pago a sido procesado, puede ver su pedido haciendo clic en su nombre</h2>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 ">
+            <input type="submit" value="Continuar" class="btn btn-default" />
+        </div>
+    </div>
+}
+@{
+    ViewBag.Title = "pagoPaypaly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int idClient = Convert.ToInt32(Session["idDir"].ToString());
+    int idDir = Convert.ToInt32(Session["idClient"].ToString());
+}
+
+<h2>Inicie sesion en su cuenta de paypal</h2>
+<div class="container">
+    <img src="~/Content/img/tarj/paypal.png" />
+    <form action="/action_page.php" style="margin:auto">
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control" id="email" placeholder="Introduzca correo" name="email" />
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password: </label>
+            <input type="password" class="form-control" id="pwd" placeholder="Introduzca su contraseña" name="pwd" />
+        </div>
+        <div class="checkbox">
+            <label> <input type="checkbox" name="remember" />Recuerdame</label>
+
+        </div>
+        <a class="btn-block btn-info text-center" style="text-decoration:none" href="@Url.Action("pagandoPaypal", "Pago", new { idC = idClient, idD = idDir})">Entrar</a>
+    </form>
+</div>

@@ -1,0 +1,123 @@
+﻿@model AccesoPaso1.Models.cliente
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Correo = Session["correo"];
+}
+
+<h2>Create</h2>
+@*using (Html.BeginForm())*@
+@using (Html.BeginForm("Create", "clientes", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>cliente</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*   <div class="form-group">
+            //     @Html.LabelFor(model => model.Id_cliente, htmlAttributes: new { @class = "control-label col-md-2" })
+              //   <div class="col-md-10">
+                     @Html.EditorFor(model => model.Id_cliente, new { htmlAttributes = new { @class = "form-control" } })
+                     @Html.ValidationMessageFor(model => model.Id_cliente, "", new { @class = "text-danger" })
+                 </div>
+             </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBoxFor(model => model.email, new { @Value = ViewBag.Correo, @readonly = true, @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.calle_t, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.calle_t, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.calle_t, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.colonia_t, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.colonia_t, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.colonia_t, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estado_t, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.estado_t, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.estado_t, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.num_tarj_cred_principal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.num_tarj_cred_principal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.num_tarj_cred_principal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <hr />
+            @Html.Label("Selecciona Tipo de tarjeta")
+            <hr />
+            <div class="col-md-4">
+                <div class="row">
+                    @Html.RadioButton("TipoTarj", "Visa")
+                    <img class="img-responsive" src="~/Content/img/tarj/visa.png" />
+                </div>
+                <div class="row">
+                    @Html.RadioButton("TipoTarj", "Masterd")
+                    <img class="img-responsive" src="~/Content/img/tarj/masterd.png" />
+                </div>
+                <div class="row">
+                    @Html.RadioButton("TipoTarj", "American")
+                    <img class="img-responsive" src="~/Content/img/tarj/american.png" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <div class="row">
+                    @Html.Label("Mes de vencimiento")
+                    @Html.Editor("Mes", new { htmlAttributes = new { @class = "form-control form-control" } })
+                </div>
+                <div class="row">
+                    @Html.Label("Año de vencimiento")
+                    @Html.Editor("Anio", new { htmlAttributes = new { @class = "form-control form-control" } })
+                </div>
+                <div class="row">
+                    @Html.Label("CVV")
+                    @Html.Editor("CVV", new { htmlAttributes = new { @class = "form-control form-control" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

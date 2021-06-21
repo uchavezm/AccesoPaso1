@@ -1,0 +1,67 @@
+﻿@model AccesoPaso1.Models.cliente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.calle_t)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.calle_t)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colonia_t)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colonia_t)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_t)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_t)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_tarj_cred_principal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_tarj_cred_principal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_cliente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

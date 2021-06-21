@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AccesoPaso1.Models.orden>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_orden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_confirmacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            Direccion de entrega
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_envio)
+        </th>
+
+        <th></th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        string val;
+        if (item.fecha_envio.HasValue)
+        {
+            val = item.fecha_envio.GetValueOrDefault().ToShortDateString();
+        }
+        else
+        {
+
+            val = "";
+        }
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_orden)
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.fecha_creacion, new { @class = "form-control", @value = item.fecha_creacion.ToShortDateString(), @readonly = "readonly" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_confirmacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cliente.calle_t)
+                @Html.DisplayFor(modelItem => item.cliente.colonia_t)
+                @Html.DisplayFor(modelItem => item.cliente.estado_t)
+            </td>
+
+            <td>
+                @Html.TextBoxFor(modelItem => item.fecha_envio, new { @class = "form-control", @value = item.fecha_creacion.ToShortDateString(), @readonly = "readonly" })
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_orden }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_orden }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_orden })
+            </td>
+        </tr>
+    }
+</table>

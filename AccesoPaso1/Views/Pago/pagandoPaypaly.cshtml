@@ -1,0 +1,43 @@
+﻿@using AccesoPaso1.Models;
+@{
+    ViewBag.Title = "pagandoPaypaly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int idClient = Convert.ToInt32(Session["idDir"].ToString());
+    int idDir = Convert.ToInt32(Session["idClient"].ToString());
+    string nombre = Session["usr"].ToString();
+    List<Item> cart = (List<Item>)Session["cart"];
+    var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+}
+
+<div class="container" style="margin:2rem auto">
+    <div>
+        <img src="~/Content/img/tarj/paypal.png" />
+    </div>
+
+    <main>
+        <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:16px">
+            <b>bienvenido @nombre</b>
+        </p>
+        <table class="table-striped table-bordered">
+            <caption>Acepta el pago de</caption>
+            <tr>
+                <td colspan="2" style="height:50px;padding:15px;">
+                    <b style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:16px">
+                        A C M E, Aelectronics
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td class="info" style="height:25px; padding:15px">Importe en pesos</td>
+
+                <td style="height:25px;padding:15px;"><b>@total</b></td>
+            </tr>
+        </table>
+    </main>
+
+    <div style="margin:auto">
+        <a class="btn btn-info text-center" style="text-decoration:none" href="@Url.Action("pagoAceptado","Pago", new { idC = idClient, idD = idDir})">´Pagar</a>
+        <a class="btn btn-info text-center" style="text-decoration:none" href="@Url.Action("pagoNoAceptado","Pago")">Cancelar</a>
+    </div>
+
+</div>

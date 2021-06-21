@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link rel="stylesheet" href="~/Content/css/EstiloIndex.css" />
+<div id="Carrusel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#Carrusel" data-slide-to="0" class="active"></li>
+        <li data-target="#Carrusel" data-slide-to="1"></li>
+        <li data-target="#Carrusel" data-slide-to="2"></li>
+        <li data-target="#Carrusel" data-slide-to="3"></li>
+        <li data-target="#Carrusel" data-slide-to="4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Content/img/conector.png" alt="Sonic" />
+            <div class="carousel-caption">
+                <h3>Conectores</h3>
+
+            </div>
+        </div>
+        <div class="item" style="text-align:center">
+            <img src="~/Content/img/extensiones.png" alt="Life is strange" style="align-items:center;" />
+            <div class="carousel-caption">
+                <h3>Extensiones</h3>
+
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/img/focos.png" alt="Celeste" />
+            <div class="carousel-caption">
+                <h3>Focos</h3>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/img/herramientas.png" alt="Megaman x" />
+            <div class="carousel-caption">
+                <h3>Herramientas electricas</h3>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/img/taladro.png" alt="Dead by Daylight" />
+            <div class="carousel-caption">
+                <h3>Taladros</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#Carrusel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <a class="right carousel-control" href="#Carrusel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<section class="clientes contenedor">
+    <h2 class="titulo" style="text-align:center;">Acerca de nosotros</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="~/Content/img/productos/iluminacion-focos-bombilla.png" alt="" />
+            <div class="contenido-texto-card">
+                <a href="Home/About">
+                    Iluminación
+                </a>
+                <p>Todo tipo de productos para la iluminación de tu hogar</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/Content/img/productos/electricidad-cableselectricos-tuboconduit-cableCobre.png" alt="" />
+            <div class="contenido-texto-card">
+                <a href="Home/About">
+                    Electricidad
+                </a>
+                <p>Todo tipo de productos electricos para el hogar</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="~/Content/img/productos/herramientas-electricas-taladrosyatornilladores-taladroInalambrico.png" alt="" />
+            <div class="contenido-texto-card">
+                <a href="Catalogo/prodCategoria">
+                    Herramientas electricas
+                </a>
+                <p>Todos tipo de herramientas electricas para el hogar</p>
+            </div>
+        </div>
+    </div>
+</section>

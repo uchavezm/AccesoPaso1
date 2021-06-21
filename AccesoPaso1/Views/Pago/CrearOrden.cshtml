@@ -1,0 +1,90 @@
+﻿@using AccesoPaso1.Models;
+@{
+    ViewBag.Title = "CrearOrden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string c = Session["usr"].ToString();
+    string d = Session["dirCliente"].ToString();
+    string fO = Session["fechaOrden"].ToString();
+    string fE = Session["fPEntreg"].ToString();
+    int tTarj = Convert.ToInt32(Session["tTarj"].ToString());
+    string fig = "";
+    string nTarj = Session["nTarj"].ToString();
+    switch (tTarj)
+    {
+        case 1:
+            fig = "visa.png";
+            break;
+        case 2:
+            fig = "masterd.png";
+            break;
+        case 3:
+            fig = "american.png";
+            break;
+    }
+}
+
+<h2>Su orden a sido completada</h2>
+<div class="container">
+    <div class="col-md-6" style="background-color:beige;">
+        <h4 class="bg-info">Cliente: @c</h4>
+        <h4 class="bg-info">Dir Entrega: @d</h4>
+        <h4 class="bg-info">Fecha de orden: @fO</h4>
+        <h4 class="bg-info">Fecha de Entrega: @fE</h4>
+    </div>
+    <div class="col-md-8 bg-success">
+        <table class="table table-bordered table-responsive table-striped">
+            <thead>
+                <tr class="info">
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>SubTotal</th>
+                </tr>
+            </thead>
+
+            @foreach (Item item in (List<Item>)Session["cart"])
+            {
+                <tr>
+                    <td><img class="img-responsive" src="~/Content/img/productos/@item.Product.imagen" /></td>
+                    <td>@item.Product.nombre</td>
+                    <td>@item.Product.precio</td>
+                    <td>@item.Cantidad </td>
+                    <td>@(item.Product.precio * item.Cantidad)</td>
+                </tr>
+            }
+            <tr>
+                <td align="right" colspan="6">Total</td>
+                <td>
+                    @{
+                        List<Item> cart = (List<Item>)Session["cart"];
+                        var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+                    }
+                    @total
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="col-md-8">
+        <p>Elija su forma de pago haciendo clic en la imagen de su eleccion</p>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-2">
+                <a href="@Url.Action("Pagar", "Pago", new { tipoPago = "T"})" style="text-decoration:none;">
+                    <img src="~/Content/img/tarj/@fig" class="img-responsive img-rounded" />
+                    @nTarj
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="@Url.Action("Pagar", "Pago", new { tipoPago= "P"})" style="text-decoration:none;">
+                    <img src="~/Content/img/tarj/paypal.png" class="img-responsive img-rounded" />
+                    paypal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>paypal.Buttons().render('body');</script>
+</div>

@@ -1,0 +1,91 @@
+﻿@model AccesoPaso1.Models.orden
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>orden</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_confirmacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_confirmacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_dirEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_dirEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_guia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_guia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paqueteria.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paqueteria.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_orden }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

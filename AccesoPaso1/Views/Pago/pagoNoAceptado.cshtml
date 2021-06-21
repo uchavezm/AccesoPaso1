@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "pagoNoAceptado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lo siento  su pago  no fue aceptado</h2>
+@using (Html.BeginForm("CrearOrden", "Pago", FormMethod.Get))
+{
+<div class="form-group">
+    <div class="col-md-offset-2">
+        <input type="submit" value="Continuar" class="btn btn-default" />
+    </div>
+         
+</div>
+
+}
+

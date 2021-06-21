@@ -1,0 +1,46 @@
+﻿@{
+    string num = Session["itemTotal"].ToString();
+}
+
+@using Microsoft.AspNet.Identity
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        string name = @Session["name"].ToString();
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="btn" href="@Url.Action("Index", "Carro")">
+                    <i class="fa fa-shoping-cart" style="font-size:24px;color:lightgoldenrodyellow"></i>
+                    <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+
+                </a>
+                @*  @Html.ActionLink("Hola " +name+" ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            </li>
+            <li>
+                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Hola @name<span class="caret"></span>  </a>
+                <ul class="dropdown-menu" role="menu">
+                      <li>@Html.ActionLink("Mis pedidos", "Index", "Pedidos", null, new {id= "add"})</li>
+                </ul>
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+                </ul>
+            }
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li > <a class="btn" href="@Url.Action("Index","Carro")"></a>
+                         
+                         <i class="fa fa-shoping-cart" style="font-size:24px;color:lightgoldenrodyellow"></i>
+                    <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+                         </li>
+                <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        }
+ 
